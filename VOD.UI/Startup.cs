@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VOD.Common.Entities;
 using VOD.Database.Contexts;
+using VOD.Database.Migrations;
 
 namespace VOD.UI
 {
@@ -38,7 +39,7 @@ namespace VOD.UI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, VODContext db)
         {
             if (env.IsDevelopment())
             {
@@ -55,6 +56,12 @@ namespace VOD.UI
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //Uncomment to recreate the database. All data will be lost!
+            //DbInitializer.RecreateDatabase(db);
+
+            //Uncomment to seed the database
+            //DbInitializer.Initialize(db);
 
             app.UseAuthentication();
             app.UseAuthorization();
