@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using VOD.Common.Entities;
 using VOD.Database.Contexts;
 using VOD.Database.Migrations;
+using VOD.Database.Services;
 
 namespace VOD.UI
 {
@@ -36,6 +37,7 @@ namespace VOD.UI
                 .AddEntityFrameworkStores<VODContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<IDbReadService, DbReadService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
