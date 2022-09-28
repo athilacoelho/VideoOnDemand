@@ -16,18 +16,19 @@ namespace VOD.UI.Controllers
     {
         //private readonly ILogger<HomeController> _logger;
         private SignInManager<VODUser> _signInManager;
-        private IDbReadService _db;
+        //private IDbReadService _db;
+        private readonly IUIReadService _db;
 
         /*public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }*/
 
-        public HomeController(SignInManager<VODUser> signInMgr)
+        public HomeController(SignInManager<VODUser> signInMgr, IUIReadService db)
         {
             _signInManager = signInMgr;
             //, IDbReadService db
-            //_db = db;
+            _db = db;
         }
 
         public async Task<IActionResult> Index()
